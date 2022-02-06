@@ -1,0 +1,1 @@
+SELECT * FROM defaultdb.long_course_events;

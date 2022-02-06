@@ -1,0 +1,183 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Point/Time conversion Long Course Meters Women</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dropdown.css') }}">
+</head>
+<header style="height: 150px; background-color: white;">
+    <div class="row">
+        <div class="column" style="width: 105.42px;">
+            <a href="index.html"><img src="{{ url_for('static', filename='uploads/Asker_SK_Logo.jpg') }}" class="profile-img" style="height: 150px;"></a>
+        </div>
+        <div class="column" style="width: 1069.16px; text-align: center; margin-top: 50px;">
+            <a href="point_time.html"><h1>Point/Time conversion Long Course Meters Women</h1></a>
+        </div>
+        <div class="column" style="width: 105.42px;">
+            <a href="index.html"><img src="{{ url_for('static', filename='uploads/Asker_SK_Logo.jpg') }}" class="profile-img" style="height: 150px;"></a>
+        </div>
+    </div>
+</header>
+<body style="padding-top: 150px;">
+	<script>
+	function calcNumbers(result){
+		form.displayPoints.value=form.displayPoints.value+result;
+		
+	}
+    
+
+    function eventDisplay(result){
+        form.displayEvent.value=result;
+        
+    }
+
+    function baseDisplay(result){
+        let lc_basetime={
+            "fiftyfr": 23.67,
+            "hundredfr": 51.71,
+            "twofr": 112.98,
+            "fourfr": 236.46,
+            "eightfr": 484.79,
+            "fifteenfr": 920.48,
+            "fiftyback": 26.98,
+            "hundredback": 57.57,
+            "twoback": 123.35,
+            "fiftybreast": 29.40,
+            "hundredbreast": 64.13,
+            "twobreast": 139.11,
+            "fiftybut": 24.43,
+            "hundredbut": 55.48,
+            "twobut": 121.81,
+            "twomed": 126.12,
+            "fourmed": 266.36,
+            "hundredfrrelay": 210.05,
+            "twofrrelay": 461.50,
+            "hundredmedrelay": 230.40
+        };
+    
+        base=lc_basetime[result];
+        //minutes=parseInt(eval(base/(displayPoints.value/1000)**(1/3)));
+    }
+    
+    
+    function valueDisplay(result){
+        form.displayValue.value=result;
+    }
+
+    //function roundMin(result){
+    //    if 
+    //}
+
+    function resultDisplay(){
+        if (minutes > 0){
+            if (hundreds.length == 1){
+                if (seconds.length == 1){
+                    form.displayResult.value=minutes.toString()+".0"+seconds+",0"+hundreds;
+                } else{
+                    form.displayResult.value=minutes.toString()+"."+seconds+",0"+hundreds;
+                }
+            } else if (seconds.length == 1){
+                form.displayResult.value=minutes.toString()+".0"+seconds+","+hundreds;
+            } else{
+                form.displayResult.value=minutes.toString()+"."+seconds+","+hundreds;
+            }
+        } else {
+            if (hundreds.length == 1){
+                form.displayResult.value=seconds+",0"+hundreds;
+            } else{
+                form.displayResult.value=seconds+","+hundreds;
+            }
+            
+        }      
+    }
+    
+
+
+	</script>
+	<div class="container">
+		<form name="form">
+		<div class="display">
+            <input type="text" placeholder="Points" name="displayPoints" />
+            <input type="text" readonly placeholder="Event" name="displayEvent" />
+            <input type="text" readonly placeholder="Calculate time" name="displayResult" />
+            <!--<input type="text" placeholder="0" name="displayValue" />-->
+		</div>
+			<div class="buttons">
+			  <div class="row">
+				<input type="button" name="b7" value="7" onClick="calcNumbers(b7.value)">
+				  <input type="button" name="b8" value="8" onClick="calcNumbers(b8.value)">
+				  <input type="button" name="b9" value="9" onClick="calcNumbers(b9.value)">
+				</div>
+				
+				<div class="row">
+				<input type="button" name="b4" value="4" onClick="calcNumbers(b4.value)">
+				  <input type="button" name="b5" value="5" onClick="calcNumbers(b5.value)">
+				  <input type="button" name="b6" value="6" onClick="calcNumbers(b6.value)">
+				</div>
+				
+				<div class="row">
+				<input type="button" name="b1" value="1" onClick="calcNumbers(b1.value)">
+				  <input type="button" name="b2" value="2" onClick="calcNumbers(b2.value)">
+				  <input type="button" name="b3" value="3" onClick="calcNumbers(b3.value)">
+				</div>
+				
+				<div class="row">
+				<input type="button" name="b0" value="0" onClick="calcNumbers(b0.value)">
+				  <input type="reset" onClick="reset_function()" value="reset">
+				  <!--<input type="button" name="divb" value="base" onClick="displayValue.value=hundreds">-->
+				  <input type="button" class="red" value="calculate time" onClick="minutes=parseInt(eval(base/(displayPoints.value/1000)**(1/3))/60), seconds=(parseInt(eval(base/(displayPoints.value/1000)**(1/3))-(minutes*60))).toString(), hundreds=parseInt((((eval(base/(displayPoints.value/1000)**(1/3))-(minutes*60))-seconds).toFixed(2)*100)).toString(), resultDisplay()">
+				</div>
+			</div>
+
+            <!--displayResult.value=eval(base/(displayPoints.value/1000)**(1/3))
+            displayResult.value=minutes.toString()+seconds.toString()
+            ((((eval(base/(displayPoints.value/1000)**(1/3))-(minutes*60))-seconds)*100).toFixed(0)).toString()-->
+
+            <div class="dropdown">
+                <button class="dropbtn">Freestyle</button>
+                <div class="dropdown-content">
+                    <input type="button" name="fiftyfr" value="50 freestyle" onClick="eventDisplay(fiftyfr.value), baseDisplay(fiftyfr.name)">
+                    <input type="button" name="hundredfr" value="100 freestyle" onClick="eventDisplay(hundredfr.value), baseDisplay(hundredfr.name)">
+                    <input type="button" name="twofr" value="200 freestyle" onClick="eventDisplay(twofr.value), baseDisplay(twofr.name)">
+                    <input type="button" name="fourfr" value="400 freestyle" onClick="eventDisplay(fourfr.value), baseDisplay(fourfr.name)">
+                    <input type="button" name="eightfr" value="800 freestyle" onClick="eventDisplay(eightfr.value),baseDisplay(eightfr.name)">
+                    <input type="button" name="fifteenfr" value="1500 freestyle" onClick="eventDisplay(fifteenfr.value), baseDisplay(fifteenfr.name)">
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Butterfly</button>
+                <div class="dropdown-content">
+                    <input type="button" name="fiftybut" value="50 butterfly" onClick="eventDisplay(fiftybut.value), baseDisplay(fiftybut.name)">
+                    <input type="button" name="hundredbut" value="100 butterfly" onClick="eventDisplay(hundredbut.value), baseDisplay(hundredbut.name)">
+                    <input type="button" name="twobut" value="200 butterfly" onClick="eventDisplay(twobut.value), baseDisplay(twobut.name)">
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Backstroke</button>
+                <div class="dropdown-content">
+                    <input type="button" name="fiftyback" value="50 backstroke" onClick="eventDisplay(fiftyback.value), baseDisplay(fiftyback.name)">
+                    <input type="button" name="hundredback" value="100 backstroke" onClick="eventDisplay(hundredback.value), baseDisplay(hundredback.name)">
+                    <input type="button" name="twoback" value="200 backstroke" onClick="eventDisplay(twoback.value), baseDisplay(twoback.name)">
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Breaststroke</button>
+                <div class="dropdown-content">
+                    <input type="button" name="fiftybreast" value="50 breaststroke" onClick="eventDisplay(fiftybreast.value), baseDisplay(fiftybreast.name)">
+                    <input type="button" name="hundredbreast" value="100 breaststroke" onClick="eventDisplay(hundredbreast.value), baseDisplay(hundredbreast.name)">
+                    <input type="button" name="twobreast" value="200 breaststroke" onClick="eventDisplay(twobreast.value), baseDisplay(twobreast.name)">
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Medley</button>
+                <div class="dropdown-content">
+                    <input type="button" name="twomed" value="200 medley" onClick="eventDisplay(twomed.value), baseDisplay(twomed.name)">
+                    <input type="button" name="fourmed" value="400 medley" onClick="eventDisplay(fourmed.value), baseDisplay(fourmed.name)">
+                </div>
+            </div>
+		</form>
+	</div>
+</body>
+	
+</html>

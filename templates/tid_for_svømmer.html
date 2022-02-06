@@ -1,0 +1,40 @@
+<?php
+  include_once 'php/dbh.inc.php';
+?>
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Tid for svømmer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+  <body>
+    <header style="height: 150px; background-color: white;">
+      <div class="row">
+        <div class="column" style="width: 105.42px;">
+          <a href="index.html"><img src="{{ url_for('static', filename='uploads/Asker_SK_Logo.jpg') }}" class="profile-img" style="height: 150px;"></a>
+        </div>
+        <div class="column" style="width: 1069.16px; text-align: center; margin-top: 50px;">
+          <h1>Tid for svømmer</h1>
+        </div>
+        <div class="column" style="width: 105.42px;">
+          <a href="index.html"><img src="{{ url_for('static', filename='uploads/Asker_SK_Logo.jpg') }}" class="profile-img" style="height: 150px;"></a>
+        </div>
+      </div>
+    </header>
+    <main>
+      <?php
+        $sql = "SELECT * FROM long_course_events;";
+        $result = mysqli_query($conn, $sql);
+        $resultCheck = mysqli_num_rows($result);
+
+        if ($resultCheck > 0) {
+          while ($row = mysqli_fetch_assoc($result)) {
+            echo $row['time'];
+          }
+        }
+      ?>
+    </main>
+  </body>
+</html>
