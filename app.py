@@ -52,12 +52,6 @@ def gold():
 def medals():
     return render_template("medals.html")
 
-#@app.route('/point_time_LCM.html', methods=['POST'])
-#def point_time_LCM():
-#    lc_stroke = request.form["lc_stroke"]
-#    lc_distance = request.form["lc_distance"]
-#    return "Stroke = %s, distance = %s" % (lc_stroke, lc_distance)
-
 @app.route('/w_point_time_LCM.html')
 def w_point_time_lcm():
     return render_template("w_point_time_LCM.html")
