@@ -1,4 +1,4 @@
-('C:\\xampp\\htdocs\\php_swim_app\\build\\app\\PYZ-00.pyz',
+('C:\\Users\\Bruker\\swim_app\\build\\app\\PYZ-00.pyz',
  [('win32com',
    'C:\\Users\\Bruker\\AppData\\Roaming\\Python\\Python39\\site-packages\\win32com\\__init__.py',
    'PYMODULE'),
