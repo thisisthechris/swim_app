@@ -1,10 +1,9 @@
-<?php
-  include_once 'php/dbh.inc.php';
-?>
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+    <?php
+      include_once 'php/dbh.inc.php';
+    ?>
     <meta charset="utf-8">
     <title>Tid for svømmer</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
