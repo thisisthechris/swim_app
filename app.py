@@ -1,5 +1,4 @@
 from flask import Flask, redirect, url_for, render_template, request
-import subprocess as sp
 
 app = Flask(__name__)
 
@@ -25,14 +24,9 @@ def point_time_LCM():
 def records():
     return render_template("records.html")
 
-#@app.route('/tid_for_svømmer.php')
-#def tid_for_svømmer():
-#    return render_template("tid_for_svømmer.php")
-
 @app.route('/tid_for_svømmer.php')
 def tid_for_svømmer():
-    out = sp.run(["php", "tid_for_svømmer.php"], stdout=sp.PIPE)
-    return out.stdout
+    return render_template("tid_for_svømmer.php")
 
 @app.route('/hall_of_fame.html')
 def hall_of_fame():
