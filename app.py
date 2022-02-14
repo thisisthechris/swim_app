@@ -5,6 +5,13 @@ app = Flask(__name__)
 
 print (__name__)
 
+app.config['MYSQL_HOST'] = 'db-mysql-ams3-37368-do-user-9992652-0.b.db.ondigitalocean.com'
+app.config['MYSQL_USER'] = 'doadmin'
+app.config['MYSQL_PASSWORD'] = 'qLQxuq2jfYaPwptP'
+app.config['MYSQL_DB'] = 'defaultdb'
+ 
+mysql = MySQL(app)
+
 @app.route('/')
 def index():
     return render_template("index.html")
