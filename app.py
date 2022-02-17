@@ -12,6 +12,19 @@ app.config['MYSQL_DB'] = 'defaultdb'
  
 mysql = MySQL(app)
 
+#Creating a connection cursor
+cursor = mysql.connection.cursor()
+ 
+#Executing SQL Statements
+cursor.execute(''' SELECT * FROM long_course_events ''')
+ 
+#Saving the Actions performed on the DB
+mysql.connection.commit()
+ 
+#Closing the cursor
+cursor.close()
+
+
 @app.route('/')
 def index():
     return render_template("index.html")
