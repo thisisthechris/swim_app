@@ -1,5 +1,7 @@
 from flask import Flask, redirect, url_for, render_template, request
 from flask_mysqldb import MySQL
+import pypyodbc
+
 
 app = Flask(__name__)
 
@@ -12,27 +14,33 @@ app.config['MYSQL_DB'] = 'defaultdb'
  
 mysql = MySQL(app)
 
+connection = pypyodbc.connect(app)
+
 #Creating a connection cursor
-#cursor = mysql.connection.cursor()
+cursor = mysql.connection.cursor()
  
 #Executing SQL Statements
-#cursor.execute(''' SELECT * FROM long_course_events ''')
+cursor.execute(''' SELECT * FROM long_course_events ''')
  
 #Saving the Actions performed on the DB
-#mysql.connection.commit()
+mysql.connection.commit()
  
 #Closing the cursor
-#cursor.close()
+cursor.close()
 
-#@app.route('/login', methods = ['POST', 'GET'])
-#def login():  
-#    if request.method == 'POST':
-#        name = request.form['name']
-#        cursor = mysql.connection.cursor()
-#        cursor.execute(''' SELECT * FROM long_course_events''')
-#        mysql.connection.commit()
-#        cursor.close()
-#        return f"Done!!"
+@app.route('/form')
+def form():
+    return render_template("form.html")
+
+@app.route('/login', methods = ['POST', 'GET'])
+def login():  
+    if request.method == 'POST':
+        name = request.form['name']
+        cursor = mysql.connection.cursor()
+        cursor.execute(''' SELECT * FROM long_course_events''')
+        mysql.connection.commit()
+        cursor.close()
+        return f"Done!!"
 
 
 @app.route('/')
@@ -42,10 +50,6 @@ def index():
 @app.route('/index.html')
 def index_():
     return render_template("index.html")
-
-@app.route('/form')
-def form():
-    return render_template("form.html")
 
 @app.route('/point_time.html')
 def point_time():
