@@ -24,19 +24,15 @@ mysql = MySQL(app)
 #Closing the cursor
 #cursor.close()
 
-@app.route('/form')
-def form():
-    return render_template("form.html")
-
-@app.route('/login', methods = ['POST', 'GET'])
-def login():  
-    if request.method == 'POST':
-        name = request.form['name']
-        cursor = mysql.connection.cursor()
-        cursor.execute(''' SELECT * FROM long_course_events''')
-        mysql.connection.commit()
-        cursor.close()
-        return f"Done!!"
+#@app.route('/login', methods = ['POST', 'GET'])
+#def login():  
+#    if request.method == 'POST':
+#        name = request.form['name']
+#        cursor = mysql.connection.cursor()
+#        cursor.execute(''' SELECT * FROM long_course_events''')
+#        mysql.connection.commit()
+#        cursor.close()
+#        return f"Done!!"
 
 
 @app.route('/')
@@ -46,6 +42,10 @@ def index():
 @app.route('/index.html')
 def index_():
     return render_template("index.html")
+
+@app.route('/form')
+def form():
+    return render_template("form.html")
 
 @app.route('/point_time.html')
 def point_time():
