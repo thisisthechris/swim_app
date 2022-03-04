@@ -13,16 +13,30 @@ app.config['MYSQL_DB'] = 'defaultdb'
 mysql = MySQL(app)
 
 #Creating a connection cursor
-cursor = mysql.connection.cursor()
+#cursor = mysql.connection.cursor()
  
 #Executing SQL Statements
-cursor.execute(''' SELECT * FROM long_course_events ''')
+#cursor.execute(''' SELECT * FROM long_course_events ''')
  
 #Saving the Actions performed on the DB
-mysql.connection.commit()
+#mysql.connection.commit()
  
 #Closing the cursor
-cursor.close()
+#cursor.close()
+
+@app.route('/form')
+def form():
+    return render_template('form.html')
+
+@app.route('/login', methods = ['POST', 'GET'])
+def login():  
+    if request.method == 'POST':
+        name = request.form['name']
+        cursor = mysql.connection.cursor()
+        cursor.execute(''' SELECT * FROM long_course_events''')
+        mysql.connection.commit()
+        cursor.close()
+        return f"Done!!"
 
 
 @app.route('/')
@@ -98,4 +112,4 @@ def qualification_times():
     return render_template("qualification_times.html")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host='db-mysql-ams3-37368-do-user-9992652-0.b.db.ondigitalocean.com')
