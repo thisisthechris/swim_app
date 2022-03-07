@@ -1,3 +1,4 @@
+from unicodedata import name
 from flask import Flask, redirect, url_for, render_template, request, jsonify
 from flask_mysqldb import MySQL
 import pypyodbc
@@ -37,10 +38,21 @@ def login():
     if request.method == 'POST':
         name = request.form['name']
         cursor = mysql.connection.cursor()
-        cursor.execute(''' SELECT * FROM long_course_events''')
+        name_id = cursor.execute(''' SELECT swimmer_id FROM swimmers WHERE name = %s''', (name))
+        cursor.execute(''' SELECT * FROM long_course_events WHERE swimmer_id = %s''', (name_id))
+        user = cursor.fetchnote()
         mysql.connection.commit()
         cursor.close()
-        return f"Done!!"
+        return render_template('user.html', user = user)
+
+@app.route("/user/<int:swimmer_id>")
+def user(swimmer_id):
+    cur = mysql.connection.cursor() 
+    cur.execute("""SELECT * FROM long_course_events WHERE swimmer_id = %s""", (swimmer_id,))
+    user = cur.fetchone()
+    return render_template('user.html', user = user)
+
+
 
 
 @app.route('/')
