@@ -53,7 +53,7 @@ def user(name):
     user = cur.fetchone()
     return render_template('user.html', user = user)
 
-@app.route('/user')
+@app.route('/user.html')
 def user(name):
     cur = mysql.connection.cursor()
     name_id = cur.execute(''' SELECT swimmer_id FROM swimmers WHERE name = %s''', (name))
