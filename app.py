@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for, render_template, request
+from flask import Flask, redirect, url_for, render_template, request, jsonify
 from flask_mysqldb import MySQL
 import pypyodbc
 
@@ -116,4 +116,4 @@ def qualification_times():
     return render_template("qualification_times.html")
 
 if __name__ == "__main__":
-    app.run(debug=True, host='db-mysql-ams3-37368-do-user-9992652-0.b.db.ondigitalocean.com')
+    app.run(debug=True)
