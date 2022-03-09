@@ -45,14 +45,13 @@ def login():
         cursor.close()
         return render_template('user.html', user = user)
 
-@app.route("/user/<int:name>")
-def user(name):
-    cur = mysql.connection.cursor()
-    name_id = cursor.execute(''' SELECT swimmer_id FROM swimmers WHERE name = %s''', (name))
-    cur.execute("""SELECT * FROM long_course_events WHERE swimmer_id = %s""", (name_id,))
+@app.route("/user/<int:id>")
+def user(id):
+    cur = mysql.connection.cursor() 
+    cur.execute("""SELECT * FROM student_data WHERE id = %s""", (id,))
     user = cur.fetchone()
     return render_template('user.html', user = user)
-
+    
 @app.route('/user.html')
 def user():#name):
 #    cur = mysql.connection.cursor()
@@ -137,3 +136,14 @@ def qualification_times():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+
+
+#@app.route("/user/<int:name>")
+#def user(name):
+#    cur = mysql.connection.cursor()
+#    name_id = cursor.execute(''' SELECT swimmer_id FROM swimmers WHERE name = %s''', (name))
+#    cur.execute("""SELECT * FROM long_course_events WHERE swimmer_id = %s""", (name_id,))
+#    user = cur.fetchone()
+#    return render_template('user.html', user = user)
