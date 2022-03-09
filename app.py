@@ -54,12 +54,12 @@ def user(name):
     return render_template('user.html', user = user)
 
 @app.route('/user.html')
-def user(name):
-    cur = mysql.connection.cursor()
-    name_id = cur.execute(''' SELECT swimmer_id FROM swimmers WHERE name = %s''', (name))
-    cur.execute(''' SELECT * FROM long_course_events WHERE swimmer_id = %s''', (name_id))
-    user = cursor.fetchnote()
-    return render_template('user.html', user = user)
+def user():#name):
+#    cur = mysql.connection.cursor()
+#    name_id = cur.execute(''' SELECT swimmer_id FROM swimmers WHERE name = %s''', (name))
+#    cur.execute(''' SELECT * FROM long_course_events WHERE swimmer_id = %s''', (name_id))
+#    user = cursor.fetchnote()
+    return render_template("user.html")#, user = user)
 
 
 
