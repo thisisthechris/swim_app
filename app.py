@@ -33,32 +33,32 @@ cursor.close()
 def form():
     return render_template("form.html")
 
-@app.route('/login', methods = ['POST', 'GET'])
-def login():  
-    if request.method == 'POST':
-        name = request.form['name']
-        cursor = mysql.connection.cursor()
-        name_id = cursor.execute(''' SELECT swimmer_id FROM swimmers WHERE name = %s''', (name))
-        cursor.execute(''' SELECT * FROM long_course_events WHERE swimmer_id = %s''', (name_id))
-        user = cursor.fetchnote()
-        mysql.connection.commit()
-        cursor.close()
-        return render_template('user.html', user = user)
+#@app.route('/login', methods = ['POST', 'GET'])
+#def login():  
+#    if request.method == 'POST':
+#        name = request.form['name']
+#        cursor = mysql.connection.cursor()
+#        name_id = cursor.execute(''' SELECT swimmer_id FROM swimmers WHERE name = %s''', (name))
+#        cursor.execute(''' SELECT * FROM long_course_events WHERE swimmer_id = %s''', (name_id))
+#        user = cursor.fetchnote()
+#        mysql.connection.commit()
+#        cursor.close()
+#        return render_template('user.html', user = user)
 
-@app.route("/user/<int:id>")
+@app.route("/user/<string:swimmer>")
 def user(id):
     cur = mysql.connection.cursor() 
-    cur.execute("""SELECT * FROM student_data WHERE id = %s""", (id,))
+    cur.execute("""SELECT id FROM student_data WHERE swimmer = %s""", (id,))
     user = cur.fetchone()
     return render_template('user.html', user = user)
     
-@app.route('/user.html')
-def user():#name):
+#@app.route('/user.html')
+#def user():#name):
 #    cur = mysql.connection.cursor()
 #    name_id = cur.execute(''' SELECT swimmer_id FROM swimmers WHERE name = %s''', (name))
 #    cur.execute(''' SELECT * FROM long_course_events WHERE swimmer_id = %s''', (name_id))
 #    user = cursor.fetchnote()
-    return render_template("user.html")#, user = user)
+#    return render_template("user.html")#, user = user)
 
 
 
