@@ -48,7 +48,7 @@ def form():
 @app.route("/user/<int:swimmer_id>")
 def user(swimmer_id):
     cur = mysql.connection.cursor() 
-    cur.execute("""SELECT id FROM defaultdb.swimmers WHERE swimmer_id = %s""", (swimmer_id,))
+    cur.execute("""SELECT swimmer_id FROM defaultdb.swimmers WHERE swimmer_id = %s""", (swimmer_id,))
     user = cur.fetchone()
     return render_template('user.html', user = user)
     
