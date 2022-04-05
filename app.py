@@ -134,6 +134,10 @@ def w_time_point_LCM():
 def qualification_times():
     return render_template("qualification_times.html")
 
+@app.route('/kvalifiseringskrav_UM-NM_2022-2023.pdf')
+def qualification_um_nm():
+    return render_template('kvalifiseringskrav_UM-NM_2022-2023.pdf')
+
 if __name__ == "__main__":
     app.run(debug=True)
 
