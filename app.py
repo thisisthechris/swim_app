@@ -29,9 +29,9 @@ mysql.connection.commit()
 #Closing the cursor
 cursor.close()
 
-@app.route('/form')
-def form():
-    return render_template("form.html")
+#@app.route('/form')
+#def form():
+#    return render_template("form.html")
 
 #@app.route('/login', methods = ['POST', 'GET'])
 #def login():  
@@ -69,6 +69,10 @@ def index():
 @app.route('/index.html')
 def index_():
     return render_template("index.html")
+
+@app.route('/form.html')
+def form():
+    return render_template("form.html")
 
 @app.route('/point_time.html')
 def point_time():
