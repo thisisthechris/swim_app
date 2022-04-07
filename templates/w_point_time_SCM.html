@@ -105,7 +105,6 @@
             <input type="text" placeholder="Points" name="displayPoints" />
             <input type="text" readonly placeholder="Event" name="displayEvent" />
             <input type="text" readonly placeholder="Calculate time" name="displayResult" />
-            <!--<input type="text" placeholder="0" name="displayValue" />-->
 		</div>
 			<div class="buttons">
 			    <div class="row">
@@ -129,9 +128,8 @@
 				<div class="row">
                     <input type="button" name="b0" value="0" onClick="calcNumbers(b0.value)">
                     <input type="reset" onClick="reset_function()" value="reset">
-                    <!--<input type="button" name="divb" value="base" onClick="displayValue.value=hundreds">-->
                     <input type="button" class="red" value="calculate time" onClick="minutes=parseInt(eval(base/(displayPoints.value/1000)**(1/3))/60), seconds=(parseInt(eval(base/(displayPoints.value/1000)**(1/3))-(minutes*60))).toString(), hundreds=parseInt((((eval(base/(displayPoints.value/1000)**(1/3))-(minutes*60))-seconds).toFixed(2)*100)).toString(), resultDisplay()">
-				</div>
+                </div>
 			</div>
 
             <!--displayResult.value=eval(base/(displayPoints.value/1000)**(1/3))
