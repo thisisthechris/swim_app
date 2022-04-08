@@ -8,10 +8,20 @@ app = Flask(__name__)
 
 print (__name__)
 
-app.config['MYSQL_HOST'] = ''
-app.config['MYSQL_USER'] = ''
-app.config['MYSQL_PASSWORD'] = ''
-app.config['MYSQL_DB'] = 'swim'
+# LOCAL
+#app.config['MYSQL_HOST'] = ''
+#app.config['MYSQL_USER'] = ''
+#app.config['MYSQL_PASSWORD'] = ''
+#app.config['MYSQL_DB'] = 'swim'
+
+# DO
+app.config['MYSQL_DATABASE_HOST'] =  'db-mysql-ams3-37368'
+app.config['MYSQL_DATABASE_PORT'] = 25060
+app.config['MYSQL_DATABASE_USER'] = 'doadmin'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'GMBZXtCbh8wgy4PE'
+app.config['MYSQL_DATABASE_DB'] = 'asker-swim-app'
+app.config['MYSQL_DATABASE_CHARSET'] = 'utf8'
+
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 #app.config['MYSQL_PORT'] = 25060
 #app.config['MYSQL_SSL'] = 'REQUIRED'

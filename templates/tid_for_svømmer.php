@@ -88,11 +88,6 @@
               </thead>
               <tbody id="tableBody">
               <tr>
-                <td>Alfreds Futterkiste</td>
-                <td>Maria Anders</td> 
-                <td>Germany</td>
-                <td>Germany</td>
-                <td>Germany</td>
               </tr>
               </tbody>
             </table>
