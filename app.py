@@ -8,10 +8,12 @@ app = Flask(__name__)
 
 print (__name__)
 
-app.config['MYSQL_HOST'] = 'db-mysql-ams3-37368-do-user-9992652-0.b.db.ondigitalocean.com'
-app.config['MYSQL_USER'] = 'doadmin'
-app.config['MYSQL_PASSWORD'] = 'GMBZXtCbh8wgy4PE'
-app.config['MYSQL_DB'] = 'defaultdb'
+app.config['MYSQL_HOST'] = ''
+app.config['MYSQL_USER'] = ''
+app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_DB'] = 'swim'
+#app.config['MYSQL_PORT'] = 25060
+#app.config['MYSQL_SSL'] = 'REQUIRED'
  
 mysql = MySQL(app)
 
