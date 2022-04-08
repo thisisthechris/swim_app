@@ -5,6 +5,9 @@
       },
       {
         "url": "heroku/python"
+      },
+      {
+        "url": "https://github.com/StatesTitle/python-pyodbc-buildpack.git"
       }
     ]
   }
