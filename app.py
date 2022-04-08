@@ -12,6 +12,7 @@ app.config['MYSQL_HOST'] = ''
 app.config['MYSQL_USER'] = ''
 app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'swim'
+app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 #app.config['MYSQL_PORT'] = 25060
 #app.config['MYSQL_SSL'] = 'REQUIRED'
  
