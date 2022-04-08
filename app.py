@@ -15,19 +15,19 @@ app.config['MYSQL_DB'] = 'defaultdb'
  
 mysql = MySQL(app)
 
-connection = pypyodbc.connect(app)
+# connection = pypyodbc.connect(app)
 
 #Creating a connection cursor
-cursor = mysql.connection.cursor()
+#cursor = mysql.get_db().cursor()
  
 #Executing SQL Statements
-cursor.execute(''' SELECT * FROM long_course_events ''')
+#cursor.execute(''' SELECT * FROM long_course_events ''')
  
 #Saving the Actions performed on the DB
-mysql.connection.commit()
+#mysql.connection.commit()
  
 #Closing the cursor
-cursor.close()
+#cursor.close()
 
 @app.route('/form')
 def form():
