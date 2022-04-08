@@ -9,29 +9,38 @@
 <header style="height: 150px; background-color: white;">
     <div class="row">
         <div class="column" style="width: 105.42px;">
+            <!--Logo + Link to index page-->
           <a href="index.html"><img src="/static/uploads/Asker_SK_Logo.jpg" class="profile-img" style="height: 150px;"></a>
         </div>
         <div class="column" style="width: 1069.16px; text-align: center; margin-top: 50px;">
+            <!--Header linking back to Point/Time conversion page-->
             <a href="point_time.html"><h1>Point to Time conversion Short Course Meters Women</h1></a>
         </div>
         <div class="column" style="width: 105.42px;">
+            <!--Logo + Link to index page-->
           <a href="index.html"><img src="/static/uploads/Asker_SK_Logo.jpg" class="profile-img" style="height: 150px;"></a>
         </div>
     </div>
 </header>
 <body style="padding-top: 150px;">
 	<script>
+        //calcNumbers executes following the onClick event of the buttons in the form
+        //calcNumbers take the number that is clicked and copies it into the displayPoints field of the form
+        //if an additional number is clicked, this will be placed after the first one
+        //pressing 1, then 3, leaves 13 in the displayPoints field
 	function calcNumbers(result){
 		form.displayPoints.value=form.displayPoints.value+result;
 		
 	}
     
-
+        //eventDisplay executes following the onClick event of the items in the dropdown menus
+        //when an event is selected and clicked on, eventDisplay will take the given event and copy it into the dsiplayEvent field of the form
     function eventDisplay(result){
         form.displayEvent.value=result;
         
     }
-
+        //baseDisplay is a dictionary contaning pairs of an abreviation for a given event, and the corresponding base time which will be used to perform calculations
+        //when an event is selected from a dropdown menu, the base time corresponding to said event is selected from baseDisplay
     function baseDisplay(result){
         let lc_basetime={
             "fiftyfr": 22.93,
@@ -59,19 +68,18 @@
             "hundredmedrelay": 224.52
         };
     
+            //base contains the given base time following the selection of an event from a dropdown menu
+            //base is used in the calculation of time from points
         base=lc_basetime[result];
-        //minutes=parseInt(eval(base/(displayPoints.value/1000)**(1/3)));
     }
     
-    
-    function valueDisplay(result){
-        form.displayValue.value=result;
-    }
-
-    //function roundMin(result){
-    //    if 
+        //valueDisplay 
+    //function valueDisplay(result){
+    //    form.displayValue.value=result;
     //}
 
+
+        //resultDisplay takes the calculated time in seconds and translates into minutes, seconds and hundreds
     function resultDisplay(){
         if (minutes > 0){
             if (hundreds.length == 1){
