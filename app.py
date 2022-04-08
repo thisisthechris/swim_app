@@ -1,7 +1,7 @@
 from unicodedata import name
 from flask import Flask, redirect, url_for, render_template, request, jsonify
 from flask_mysqldb import MySQL
-#import pypyodbc
+import pypyodbc
 
 
 app = Flask(__name__)
