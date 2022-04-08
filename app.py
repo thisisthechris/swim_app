@@ -8,26 +8,29 @@ app = Flask(__name__)
 
 print (__name__)
 
-app.config['MYSQL_HOST'] = 'db-mysql-ams3-37368-do-user-9992652-0.b.db.ondigitalocean.com'
-app.config['MYSQL_USER'] = 'doadmin'
-app.config['MYSQL_PASSWORD'] = 'GMBZXtCbh8wgy4PE'
-app.config['MYSQL_DB'] = 'defaultdb'
+app.config['MYSQL_HOST'] = ''
+app.config['MYSQL_USER'] = ''
+app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_DB'] = 'swim'
+app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
+#app.config['MYSQL_PORT'] = 25060
+#app.config['MYSQL_SSL'] = 'REQUIRED'
  
 mysql = MySQL(app)
 
-connection = pypyodbc.connect(app)
+# connection = pypyodbc.connect(app)
 
 #Creating a connection cursor
-cursor = mysql.connection.cursor()
+#cursor = mysql.get_db().cursor()
  
 #Executing SQL Statements
-cursor.execute(''' SELECT * FROM long_course_events ''')
+#cursor.execute(''' SELECT * FROM long_course_events ''')
  
 #Saving the Actions performed on the DB
-mysql.connection.commit()
+#mysql.connection.commit()
  
 #Closing the cursor
-cursor.close()
+#cursor.close()
 
 #@app.route('/form')
 #def form():
@@ -45,12 +48,22 @@ cursor.close()
 #        cursor.close()
 #        return render_template('user.html', user = user)
 
+
 @app.route("/user/<int:swimmer_id>")
 def user(swimmer_id):
-    cur = mysql.connection.cursor() 
-    cur.execute("""SELECT * FROM defaultdb.swimmers WHERE swimmer_id = %s""", (swimmer_id,))
+    cur = mysql.connection.cursor()
+    cur.execute("""SELECT * FROM swim.`Events long course` WHERE id = %s""", (swimmer_id,))
     user = cur.fetchone()
     return render_template('user.html', user = user)
+
+@app.route("/userdata/<int:swimmer_id>")
+def userdata(swimmer_id):
+    cur = mysql.connection.cursor()
+    cur.execute("""SELECT * FROM swim.`Swimmers` WHERE id = %s""", (swimmer_id,))
+    swimmer = cur.fetchone()
+    cur.execute("""SELECT * FROM swim.`Events long course` WHERE name = %s""", (swimmer['name'],))
+    user = cur.fetchall()
+    return jsonify(user)
     
 #@app.route('/user.html')
 #def user():#name):
@@ -88,7 +101,12 @@ def records():
 
 @app.route('/tid_for_svømmer.php')
 def tid_for_svømmer():
-    return render_template("tid_for_svømmer.php")
+    cur = mysql.connection.cursor()
+    #cur.execute("""SELECT * FROM swim.swimmers WHERE id = %s""", (swimmer_id,))
+    cur.execute("SELECT * FROM swim.`Swimmers`")
+    swimmers = cur.fetchall()
+    print(swimmers)
+    return render_template('tid_for_svømmer.php', swimmers = swimmers)
 
 @app.route('/hall_of_fame.html')
 def hall_of_fame():
