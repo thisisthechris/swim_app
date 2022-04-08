@@ -32,12 +32,30 @@
 
                 //display on page
 
-                document.getElementById("spanSwimmer").innerHTML = data.name;
-                document.getElementById("spanEvent").innerHTML = data.event;
-                document.getElementById("spanTime").innerHTML = data.time;
-                document.getElementById("spanPoints").innerHTML = data.points;
-                document.getElementById("spanDate").innerHTML = data.date;
-                document.getElementById("spanPool").innerHTML = data.pool;
+                document.getElementById("tableBody").innerHTML = ""
+                document.getElementById("spanSwimmer").innerHTML = data[0].name;
+
+                // Find a <table> element with id="myTable":
+                var table = document.getElementById("resultsTable");
+
+
+                for (let i = 0; i < data.length; i++) { 
+                  var row = table.insertRow(i+1);
+
+                  var cell1 = row.insertCell(0);
+                  var cell2 = row.insertCell(1);
+                  var cell3 = row.insertCell(2);
+                  var cell4 = row.insertCell(3);
+                  var cell5 = row.insertCell(4);
+
+                  cell1.innerHTML = data[i].date;
+                  cell2.innerHTML = data[i].event;
+                  cell3.innerHTML = data[i].pool;
+                  cell4.innerHTML = data[i].time;
+                  cell5.innerHTML = data[i].points;
+                  
+              }
+
               }
             );
         }
@@ -55,12 +73,29 @@
 		    <div class="display">
           <div class="row">
             <div class="user">
-              <p>Swimmer: <span id="spanSwimmer"></span></p>
-              <p>Event: <span id="spanEvent"></span></p>
-              <p>Time: <span id="spanTime"></span></p>
-              <p>Points: <span id="spanPoints"></span></p>
-              <p>Date: <span id="spanDate"></span></p>
-              <p>Pool: <span id="spanPool"></span></p>
+
+              <h1>Swimmer: <span id="spanSwimmer"></span></h1>
+
+              <table id="resultsTable">
+              <thead>
+              <tr>
+                <th>Date</th>
+                <th>Event</th> 
+                <th>Pool</th>
+                <th>Time</th>
+                <th>Points</th>
+              </tr>
+              </thead>
+              <tbody id="tableBody">
+              <tr>
+                <td>Alfreds Futterkiste</td>
+                <td>Maria Anders</td> 
+                <td>Germany</td>
+                <td>Germany</td>
+                <td>Germany</td>
+              </tr>
+              </tbody>
+            </table>
             </div>
           </div>
         </div>
