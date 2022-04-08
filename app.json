@@ -1,0 +1,10 @@
+{
+    "buildpacks": [
+      {
+        "url": "https://github.com/gaumire/heroku-buildpack-mysql"
+      },
+      {
+        "url": "heroku/python"
+      }
+    ]
+  }
