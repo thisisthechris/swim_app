@@ -42,7 +42,7 @@
         //baseDisplay is a dictionary contaning pairs of an abreviation for a given event, and the corresponding base time which will be used to perform calculations
         //when an event is selected from a dropdown menu, the base time corresponding to said event is selected from baseDisplay
     function baseDisplay(result){
-        let lc_basetime={
+        let sc_basetime={
             "fiftyfr": 22.93,
             "hundredfr": 50.25,
             "twofr": 110.43,
@@ -70,7 +70,7 @@
     
             //base contains the given base time following the selection of an event from a dropdown menu
             //base is used in the calculation of time from points
-        base=lc_basetime[result];
+        base=sc_basetime[result];
     }
     
 
@@ -160,6 +160,7 @@
 
             <!--dropdown containing all events-->
             <div class="dropdown">
+                <!--freestyle events-->
                 <button class="dropbtn">Freestyle</button>
                 <div class="dropdown-content">
                     <input type="button" name="fiftyfr" value="50 freestyle" onClick="eventDisplay(fiftyfr.value), baseDisplay(fiftyfr.name)">
@@ -171,6 +172,7 @@
                 </div>
             </div>
             <div class="dropdown">
+                <!--butterfly events-->
                 <button class="dropbtn">Butterfly</button>
                 <div class="dropdown-content">
                     <input type="button" name="fiftybut" value="50 butterfly" onClick="eventDisplay(fiftybut.value), baseDisplay(fiftybut.name)">
@@ -179,6 +181,7 @@
                 </div>
             </div>
             <div class="dropdown">
+                <!--backstroke events-->
                 <button class="dropbtn">Backstroke</button>
                 <div class="dropdown-content">
                     <input type="button" name="fiftyback" value="50 backstroke" onClick="eventDisplay(fiftyback.value), baseDisplay(fiftyback.name)">
@@ -187,6 +190,7 @@
                 </div>
             </div>
             <div class="dropdown">
+                <!--breaststroke events-->
                 <button class="dropbtn">Breaststroke</button>
                 <div class="dropdown-content">
                     <input type="button" name="fiftybreast" value="50 breaststroke" onClick="eventDisplay(fiftybreast.value), baseDisplay(fiftybreast.name)">
@@ -195,6 +199,7 @@
                 </div>
             </div>
             <div class="dropdown">
+                <!--medley events-->
                 <button class="dropbtn">Medley</button>
                 <div class="dropdown-content">
                     <input type="button" name="hundredmed" value="100 medley" onClick="eventDisplay(hundredmed.value), baseDisplay(hundredmed.name)">
