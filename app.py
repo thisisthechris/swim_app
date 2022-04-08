@@ -59,8 +59,10 @@ def user(swimmer_id):
 @app.route("/userdata/<int:swimmer_id>")
 def userdata(swimmer_id):
     cur = mysql.connection.cursor()
-    cur.execute("""SELECT * FROM swim.`Events long course` WHERE id = %s""", (swimmer_id,))
-    user = cur.fetchone()
+    cur.execute("""SELECT * FROM swim.`Swimmers` WHERE id = %s""", (swimmer_id,))
+    swimmer = cur.fetchone()
+    cur.execute("""SELECT * FROM swim.`Events long course` WHERE name = %s""", (swimmer['name'],))
+    user = cur.fetchall()
     return jsonify(user)
     
 #@app.route('/user.html')
@@ -101,8 +103,6 @@ def tid_for_svømmer():
     swimmers = cur.fetchall()
     print(swimmers)
     return render_template('tid_for_svømmer.php', swimmers = swimmers)
-
-    return render_template("tid_for_svømmer.php")
 
 @app.route('/hall_of_fame.html')
 def hall_of_fame():
