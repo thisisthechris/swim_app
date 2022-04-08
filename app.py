@@ -48,13 +48,20 @@ def form():
 #        cursor.close()
 #        return render_template('user.html', user = user)
 
+
 @app.route("/user/<int:swimmer_id>")
 def user(swimmer_id):
     cur = mysql.connection.cursor()
-    #cur.execute("""SELECT * FROM swim.swimmers WHERE id = %s""", (swimmer_id,))
     cur.execute("""SELECT * FROM swim.`Events long course` WHERE id = %s""", (swimmer_id,))
     user = cur.fetchone()
     return render_template('user.html', user = user)
+
+@app.route("/userdata/<int:swimmer_id>")
+def userdata(swimmer_id):
+    cur = mysql.connection.cursor()
+    cur.execute("""SELECT * FROM swim.`Events long course` WHERE id = %s""", (swimmer_id,))
+    user = cur.fetchone()
+    return jsonify(user)
     
 #@app.route('/user.html')
 #def user():#name):
@@ -88,6 +95,13 @@ def records():
 
 @app.route('/tid_for_svømmer.php')
 def tid_for_svømmer():
+    cur = mysql.connection.cursor()
+    #cur.execute("""SELECT * FROM swim.swimmers WHERE id = %s""", (swimmer_id,))
+    cur.execute("SELECT * FROM swim.`Swimmers`")
+    swimmers = cur.fetchall()
+    print(swimmers)
+    return render_template('tid_for_svømmer.php', swimmers = swimmers)
+
     return render_template("tid_for_svømmer.php")
 
 @app.route('/hall_of_fame.html')
